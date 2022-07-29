@@ -1,0 +1,31 @@
+{display} <- [display] <- (GPS), (light)
+ ^  |
+ |  V
+{command} <- [command] <- (inverter), (solar)
+ ^  ^
+ |  `- [kitchen] <- (gas), (fridge temp), (environ)
+ |
+ `---- [utility] <- (spirit level), (water), (extern env)
+
+{message node} - has a message router and message handler (these are RPI's). Can also act as its own message source.
+[message source] - simply provides messages about data sources on demand (these are Pico's or the RPI itself)
+(data source) - sensor etc.
+
+ For each message node:
+     List of from's (may include its own message source)
+     List of to's
+
+Message router loop:
+     Checks each "from" in turn for messages and receives them
+     For every message received, if "from" not on "to" list, repacks as from itself and sends to all to's.
+     For every message received, passes it to the message handler for that node
+
+
+A message is a tuple of form (from_name, message_body)
+A message body is a dictionary that will always have a key, "Source", and an arbitrary set of other keys. Will need a
+file common across RPIs and Picos that defines these sources and the other keys for each.
+
+From's will be a list (array?) of Func<>'s of form, Func<message>
+To's will be a list (array?) of tuples of form, (to_name, Action<message>)
+
+
