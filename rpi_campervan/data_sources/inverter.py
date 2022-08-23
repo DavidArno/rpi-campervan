@@ -1,7 +1,7 @@
-from modes import Modes
-from states import States
-from alarm_reasons import AlarmReasons
-from off_reasons import OffReasons
+from rpi_campervan.data_sources.modes import Modes
+from rpi_campervan.data_sources.states import States
+from rpi_campervan.data_sources.alarm_reasons import AlarmReasons
+from rpi_campervan.data_sources.off_reasons import OffReasons
 
 class VictronInverter:
 
