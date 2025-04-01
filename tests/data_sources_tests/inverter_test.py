@@ -1,6 +1,3 @@
-print(__package__)
-print(__name__)
-
 from rpi_campervan.data_sources.alarm_reasons import AlarmReasons
 from rpi_campervan.data_sources.inverter import VictronInverter
 from rpi_campervan.data_sources.modes import Modes
